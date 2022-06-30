@@ -18,16 +18,16 @@ class pred_validation:
 
             self.log_writer.log(self.file_object,'Start of Validation on files for prediction!!')
             #extracting values from prediction schema
-            LengthOfDateStampInFile,LengthOfTimeStampInFile,column_names,noofcolumns = self.raw_data.valuesFromSchema()
+            LengthOfDateStampInFile, LengthOfTimeStampInFile, column_names, noofcolumns = self.raw_data.valuesFromSchema()
             #getting the regex defined to validate filename
             regex = self.raw_data.manualRegexCreation()
             #validating filename of prediction files
-            self.raw_data.validationFileNameRaw(regex,LengthOfDateStampInFile,LengthOfTimeStampInFile)
+            self.raw_data.validationFileNameRaw(regex, LengthOfDateStampInFile, LengthOfTimeStampInFile)
             #validating column length in the file
             self.raw_data.validateColumnLength(noofcolumns)
             #validating if any column has all values missing
             self.raw_data.validateMissingValuesInWholeColumn()
-            self.log_writer.log(self.file_object,"Raw Data Validation Complete!!")
+            self.log_writer.log(self.file_object, "Raw Data Validation Complete!!")
 
             self.log_writer.log(self.file_object,("Starting Data Transforamtion!!"))
             #replacing blanks in the csv file with "Null" values to insert in table
